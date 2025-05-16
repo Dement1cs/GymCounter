@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Gym app</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nova+Square&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+	
+</head>
+<body>
+
+<!-- Navigation -->
+<body>
+    
+    <nav class="navbar navbar-dark custom-bg-color" aria-label="label">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="true" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand mx-auto" href="#">
+                <img src="{{ url_for('static', filename='img/fullGymLogo3.png') }}" alt="logo" width="170" class="rounded d-block mx-auto"> <!-- Added 'd-block mx-auto' classes -->
+            </a>
+            <div class="navbar-collapse collapse" id="navbarsExample01">
+                <ul class="navbar-nav me-auto mb2">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href=/Login>Login</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href=/Signup>Signup</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href=activity.html>Activity</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="slideBanner" class="img-fluid">
+        <div class="slide">
+            <img src="{{ url_for('static', filename='img/grif.jpeg') }}" alt="slide1" class="img-fluid">
+        </div>
+        <div class="slide">
+            <img src="{{ url_for('static', filename='img/blin15.jpeg') }}" alt="slide2" class="img-fluid">
+        </div>
+        <div class="slide">
+            <img src="{{ url_for('static', filename='img/gantelya.jpeg') }}" alt="slide3" class="img-fluid">
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-1 text-center mb-5 mt-5 color1 fw-normal custom-color">GYM COUNTER</h1>
+            </div>
+        </div>
+    </div>
+    <section class="about">
+        <div class="container">
+            <div class="row align-items-start mb-5 mt-5">
+                <div class="col-lg-7  col-sm-12"> 
+                    <h5 class="text-wrap text-break">
+                        Welcome to Gym Counter!<br><br><br>
+                        This system offers a simple yet effective solution for monitoring gym attendance using a compact Raspberry Pi-based setup. Designed to help visitors quickly assess how crowded the gym is, it uses physical IN/OUT buttons to count how many people are inside.<br><br>
+                    </h5>
+                    <h5 class="text-wrap text-break">
+                        The system includes an auto-decrement feature — if someone forgets to press "OUT", the system assumes a standard workout time of 60 minutes and subtracts them automatically. This makes the counter more realistic and reliable, while keeping it easy to use.<br><br>
+                    </h5>
+                </div>
+                <div class="col-lg-5 col-sm-12 text-center">
+                    <img src="{{ url_for('static', filename='img/runnerPicture.jpeg') }}" alt="pi" class="img-fluid">
+                </div>
+            </div>
+        </div>   
+        <br>
+        <div class="container">
+            <div class="row align-items-start mb-5 mt-5">
+                <div class="col-lg-5 col-sm-12 text-center">
+                    <img src="{{ url_for('static', filename='img/weekly_gym_activity_chart.png') }}" alt="chart" class="img-fluid">
+                </div>
+                <div class="col-lg-7  col-sm-12">
+                    <h5 class="text-wrap text-break">Once installed, the system immediately starts monitoring gym activity through two physical buttons: one pressed at entry (IN), and one at exit (OUT). Each press updates the live counter.<br><br>
+                    </h5>
+                    <h5 class="text-wrap text-break">The current number of people in the gym is shown via a simple web interface, accessible from any device on the same network. It updates in real time every few seconds, providing an always-accurate snapshot of gym occupancy.<br><br>
+                    </h5>
+                    <h5 class="text-wrap text-break">The interface can also be extended to log timestamps and visualize trends, helping staff analyze peak hours and optimize usage of space and equipment.
+                    </h5>
+                </div>
+            </div>
+        </div>  
+        <br>
+        <div class="container">
+            <div class="row align-items-start mb-5 mt-5">
+                <div class="col-lg-7  col-sm-12">
+                    <h5 class="text-wrap text-break">Gym Counter is built using Raspberry Pi 5 and Python, with GPIO-connected momentary buttons and a lightweight Flask-powered web interface. The data is stored in a local SQLite database and can be visualized or extended with additional features.<br><br>
+                    </h5>
+                    <h5 class="text-wrap text-break">This system is cost-effective, fully offline (no sensitive data transmitted), and highly adaptable — it can be used in gyms, libraries, labs, or any physical space where occupancy tracking is needed.
+                        <br><br>
+                    </h5>
+                    <h5 class="text-wrap text-break"> This solution bridges everyday gym needs with modern technology, serving as a scalable foundation for future smart facility management.
+                    </h5>
+                </div>
+                <div class="col-lg-5 col-sm-12 text-center">
+                    <img src="{{ url_for('static', filename='img/pi.png') }}" alt="bus" class="img-fluid">
+                </div>
+            </div>
+        </div> 
+        <br>
+    </section>  
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 footer-left mt-5">
+                    <p class="fs-5"><strong>Dmytro Zadorozhnyi:</strong> x21516939, x21516939@student.ncirl.ie</p>
+                </div>
+                <div class="col-md-6 footer-right">
+                    <img src="{{ url_for('static', filename='img/logo3.png') }}" alt="footer-logo" class="footer-logo rounded" height="300">
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+            function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            
+            //cycle through slides -- hides the display of slides and cycles through them using the index. 
+                for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+                }
+                slideIndex++;
+            
+            //loop slides back around when reached end of slide show -- if slide index is larger than slide length then it sets slide index back to 1.
+                if (slideIndex > slides.length){
+                    slideIndex = 1;
+                }
+            
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 5000); // Change image every 5 seconds
+            }
+    </script>
+</body>
+</html> 

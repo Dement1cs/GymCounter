@@ -1,0 +1,121 @@
+/* Main */
+/* Footer */
+.footer {
+/*
+    background: linear-gradient(135deg,#187de3,#ffffff);
+	*/
+	background-color: #20734c;
+    padding: 20px 0;
+    text-align: center;
+    color:aliceblue
+}
+.footer-left {
+    text-align: left;
+}
+.footer-right {
+    text-align: right;
+}
+.footer-logo {
+    max-width: 300px; 
+    height: auto;
+}       
+/* Main End */        
+
+/*
+.custom-bg-color {
+    background: linear-gradient(135deg,#187de3,#ffffff) !important; / !important to override default Bootstrap style /
+}
+*/
+
+/* order */
+.form-select{
+    border-radius: 20px; /* Rounding the corners of input fields */
+    background-color: rgba(255, 255, 255, 0.3); /* Transparent white color */
+    backdrop-filter: blur(2px); /*  blur to the input field */
+}
+
+/* === Dark Green Theme === */
+
+body {
+  background-color: #1d1f1e;
+  color: #e0e0e0;
+  font-family: "Prompt", sans-serif;
+}
+
+.navbar {
+  background-color: #20734c;
+}
+
+.navbar a,
+.navbar-brand {
+  color: #e0e0e0;
+}
+
+.navbar a:hover {
+  color: #33cc99;
+}
+
+a {
+  color: #33cc99;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #2ecc71;
+  text-decoration: underline;
+}
+
+.btn-primary {
+  background-color: #33cc99;
+  border-color: #2ecc71;
+  color: #1d1f1e;
+}
+
+.btn-primary:hover {
+  background-color: #2ecc71;
+  border-color: #33cc99;
+  color: #fff;
+}
+
+.card {
+  background-color: #2b2f2e;
+  border: none;
+  color: #e0e0e0;
+}
+
+.counter-box {
+  background-color: #2b2f2e;
+  color: #e0e0e0;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.status-indicator.bg-success {
+  background-color: #2ecc71 !important;
+}
+
+.status-indicator.bg-warning {
+  background-color: #f1c40f !important;
+}
+
+.status-indicator.bg-danger {
+  background-color: #e74c3c !important;
+}
+
+/* === other === */
+
+ .custom-bg-color1{
+  background-color: #20734c;
+ }
+
+ .custom-font-size1{
+  font-size: 150px;
+ }
+
+ .big-card {
+  min-width: 750px;
+  min-height: 400px;
+}
+
+.custom-gap {
+    gap: 0px; /* Замените на нужное значение */
+}
