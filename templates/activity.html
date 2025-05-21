@@ -44,9 +44,9 @@
 
             <div class="navbar-collapse collapse" id="navbarsExample01">
                 <ul class="navbar-nav me-auto mb2">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href=/Login>Login</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href=/Signup>Signup</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ url_for('activity') }}">About</a></li>
                 </ul>
             </div>
         </div>
@@ -60,6 +60,16 @@
             </div>
         </div>
     </div>
+    <section class="about">
+        <div class="container">
+            <div class="row justify-content-center mt-5 mb-5">
+                <div class="col-md-6">
+                    <div class="card rounded-3 shadow text-center py-4">
+                            <h1 class="display-6 fw-normal custom-color1">People in the gym:</h1>
+                </div>
+            </div>
+        </div>
+    </section>   
     <section class="about">
         <div class="container">
             <div class="row justify-content-center mt-5 mb-5">
@@ -83,10 +93,10 @@
                         <h3 class="mb-4">Control Panel</h3>
                         <div class="d-flex justify-content-center gap-4">
                             <form method="post" action="/in">
-                                <button type="button" class="btn btn-success btn-lg px-5" style="width: 150px; height: 60px;">IN</button>
+                                <button type="submit" class="btn btn-success btn-lg px-5" style="width: 150px; height: 60px;">IN</button>
                             </form>
                             <form method="post" action="/out">
-                                <button type="button" class="btn btn-danger btn-lg px-5" style="width: 150px; height: 60px;">OUT</button>
+                                <button type="submit" class="btn btn-danger btn-lg px-5" style="width: 150px; height: 60px;">OUT</button>
                             </form>
                         </div>
                     </div>
