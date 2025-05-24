@@ -36,5 +36,18 @@ def mark_out():
         people.pop(0)
     return redirect(url_for('activity'))
 
+@app.route('/api/daily')
+def api_daily():
+    labels = ["6–7", "7–8", "8–9", "9–10", "10–11", "11–12", "12–13", "13–14",
+              "14–15", "15–16", "16–17", "17–18", "18–19", "19–20", "20–21", "21–22"]
+    values = [12, 18, 25, 30, 28, 22, 20, 17, 15, 18, 24, 40, 55, 60, 45, 20]
+    return { "labels": labels, "values": values }
+    
+@app.route('/api/weekly')
+def api_weekly():
+    labels = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
+    values = [120, 135, 150, 140, 160, 200, 180]
+    return { "labels": labels, "values": values }
+
 if __name__ == '__main__':
     app.run(debug=True)
