@@ -1,26 +1,29 @@
 from flask import Flask, render_template, redirect, url_for, request
+from db import init_db, add_event, get_daily_stats, get_weekly_stats
 import time
 import threading
 
 app = Flask(__name__)
-people = []  # сюда будут сохраняться временные метки входов
+people = []  #временные метки входов
 
 def auto_remove(ts):
-    time.sleep(60 * 60)  # 60 минут
+    time.sleep(60 * 60)  #60 мин
     if ts in people:
         people.remove(ts)
         print("Автовыход сработал")
 
-# Главная страница — описание проекта
+# Главная страница
 @app.route('/')
 def index():
     return render_template("index.html")
 
-# Страница активности (счётчик + кнопки)
+# Страница активности 
 @app.route('/activity')
 def activity():
     return render_template("activity.html", count=len(people))
 
+#FAKE STAT
+"""
 # Обработка входа (IN)
 @app.route('/in', methods=['POST'])
 def mark_in():
@@ -45,9 +48,38 @@ def api_daily():
     
 @app.route('/api/weekly')
 def api_weekly():
-    labels = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
+    labels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     values = [120, 135, 150, 140, 160, 200, 180]
     return { "labels": labels, "values": values }
+"""
+
+#TRUE STAT
+init_db()
+
+@app.route('/in', methods=['POST'])
+def mark_in():
+    ts = time.time()
+    people.append(ts)
+    add_event("in")
+    threading.Thread(target=auto_remove, args=(ts,), daemon=True).start()
+    return redirect(url_for('activity'))
+
+@app.route('/out', methods=['POST'])
+def mark_out():
+    if people:
+        people.pop(0)
+    add_event("out")
+    return redirect(url_for('activity'))
+
+@app.route('/api/daily')
+def api_daily():
+    labels, values = get_daily_stats()
+    return {"labels": labels, "values": values}
+
+@app.route('/api/weekly')
+def api_weekly():
+    labels, values = get_weekly_stats()
+    return {"labels": labels, "values": values}
 
 if __name__ == '__main__':
     app.run(debug=True)
