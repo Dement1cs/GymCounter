@@ -52,3 +52,5 @@ GymCounter/
 ├── static/             # Static files (CSS, JS)
 └── tests/              # Autotests (pytest)
 ```
+## GitHub Repository
+**GitHub:** https://github.com/Dement1cs/GymCounter
