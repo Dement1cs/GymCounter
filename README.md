@@ -25,6 +25,11 @@ pip install -r requirements.txt
 ```bash
 python -c "from db import init_db; init_db()"
 ```
+Using the script
+```bash
+sqlite3 db.sqlite3 < schema.sql
+```
+
 4. **run application**
 ```bash
 python app.py
@@ -34,4 +39,16 @@ python app.py
 ```bash
 pip install Flask
 pip install pytest
+```
+
+## Project Structure
+```bash
+GymCounter/
+├── app.py              # Flask Application and Routes
+├── db.py               # working with SQLite
+├── requirements.txt    # Project dependencies
+├── schema.sql          # SQL script for creating the events table
+├── templates/          # Templates (index.html, activity.html)
+├── static/             # Static files (CSS, JS)
+└── tests/              # Autotests (pytest)
 ```
