@@ -81,5 +81,9 @@ def api_weekly():
     labels, values = get_weekly_stats()
     return {"labels": labels, "values": values}
 
+@app.route('/api/count')
+def api_count():
+    return {"count": len(people)}
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

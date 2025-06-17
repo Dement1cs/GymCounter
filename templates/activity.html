@@ -135,7 +135,9 @@ fetch("/api/weekly")
                 <div class="col-md-6">
                     <div class="card rounded-3 shadow custom-bg-color1">
                         <div class="card-body d-flex justify-content-center align-items-center" style="height: 200px;">
-                            <h1 class="display-6 fw-normal custom-color1 custom-font-size1">{{ count }}</h1>
+                            <h1 class="display-6 fw-normal custom-color1 custom-font-size1">
+                                <span id="count">{{ count }}</span>
+                            </h1>
                         </div>
                 </div>
             </div>
@@ -151,10 +153,10 @@ fetch("/api/weekly")
                     <div class="card-body">
                         <h3 class="mb-4">Control Panel</h3>
                         <div class="d-flex justify-content-center gap-4">
-                            <form method="post" action="/in">
+                            <form id="in-form" method="post" action="/in">
                                 <button type="submit" class="btn btn-success btn-lg px-5" style="width: 150px; height: 60px;">IN</button>
                             </form>
-                            <form method="post" action="/out">
+                            <form id="out-form" method="post" action="/out">
                                 <button type="submit" class="btn btn-danger btn-lg px-5" style="width: 150px; height: 60px;">OUT</button>
                             </form>
                         </div>
@@ -205,4 +207,31 @@ fetch("/api/weekly")
     
     
 </body>
+<script>
+  // Функция для запроса текущего count
+  async function updateCount() {
+    try {
+      const res = await fetch('/api/count');
+      const data = await res.json();
+      document.getElementById('count').innerText = data.count;
+    } catch (e) {
+      console.error('Ошибка /api/count', e);
+    }
+  }
+  // Первичный вызов и затем по таймеру
+  updateCount();
+  setInterval(updateCount, 2000);
+
+  // Перехват сабмитов IN/OUT чтобы не перезагружать страницу
+  document.getElementById('in-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    await fetch('/in', { method: 'POST' });
+    updateCount();
+  });
+  document.getElementById('out-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    await fetch('/out', { method: 'POST' });
+    updateCount();
+  });
+</script>
 </html> 
