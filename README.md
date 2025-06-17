@@ -21,7 +21,7 @@ cd GymCounter
 python -m venv venv
 pip install -r requirements.txt
 ```
-3. **Инициализируем базу данных**
+3. **Initialize the database**
 ```bash
 python -c "from db import init_db; init_db()"
 ```
