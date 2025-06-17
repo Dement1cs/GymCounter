@@ -22,9 +22,9 @@ python -m venv venv
 pip install -r requirements.txt
 ```
 3. **Initialize the database**  
-   ```bash
-   python -c "from db import init_db; init_db()"
-
+```bash
+python -c "from db import init_db; init_db()"
+```
 4. **Run application**
 ```bash
 python app.py
