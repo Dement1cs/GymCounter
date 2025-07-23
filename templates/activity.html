@@ -82,21 +82,20 @@ fetch("/api/weekly")
 
             <div class="d-flex w-100 align-items-center justify-content-between">
 
-            <!-- Левая колонка: кнопка -->
+
             <div class="d-flex" style="width: 33.3%;">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="true" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
 
-            <!-- Центр: логотип -->
+
             <div class="text-center" style="width: 33.3%;">
                 <a class="navbar-brand m-0" href="#">
                     <img src="{{ url_for('static', filename='img/fullGymLogo3.png') }}" alt="logo" width="170" class="d-block mx-auto">
                 </a>
             </div>
 
-            <!-- Правая колонка: пустая для баланса -->
             <div style="width: 33.3%;"></div>
 
         </div>
@@ -208,7 +207,7 @@ fetch("/api/weekly")
     
 </body>
 <script>
-  // Функция для запроса текущего count
+  // Функция для запроса текущего count | Function to query the current count
   async function updateCount() {
     try {
       const res = await fetch('/api/count');
@@ -218,11 +217,11 @@ fetch("/api/weekly")
       console.error('Ошибка /api/count', e);
     }
   }
-  // Первичный вызов и затем по таймеру
+  // Первичный вызов и затем по таймеру | Initial call and then by timer
   updateCount();
   setInterval(updateCount, 2000);
 
-  // Перехват сабмитов IN/OUT чтобы не перезагружать страницу
+  // Перехват сабмитов IN/OUT чтобы не перезагружать страницу | Intercept IN/OUT submissions to avoid page reloads
   document.getElementById('in-form').addEventListener('submit', async e => {
     e.preventDefault();
     await fetch('/in', { method: 'POST' });

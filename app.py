@@ -12,12 +12,12 @@ def auto_remove(ts):
         people.remove(ts)
         print("Автовыход сработал")
 
-# Главная страница
+# Главная страница | main page
 @app.route('/')
 def index():
     return render_template("index.html")
 
-# Страница активности 
+# Страница активности | activity page
 @app.route('/activity')
 def activity():
     return render_template("activity.html", count=len(people))

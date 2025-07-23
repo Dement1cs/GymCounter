@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 DB_NAME = "db.sqlite3"
 
-# Создание таблицы, если ещё не существует
+# create table
 def init_db():
     with sqlite3.connect(DB_NAME) as conn:
         cursor = conn.cursor()
@@ -16,14 +16,14 @@ def init_db():
         """)
         conn.commit()
 
-# Добавить событие (in/out)
+# add event (in/out)
 def add_event(event_type):
     with sqlite3.connect(DB_NAME) as conn:
         cursor = conn.cursor()
         cursor.execute("INSERT INTO events (type) VALUES (?)", (event_type,))
         conn.commit()
 
-# Получить статистику по часам (за сегодня)
+# get stat by hours (for today)
 def get_daily_stats():
     now = datetime.now()
     start = now.replace(hour=0, minute=0, second=0, microsecond=0)
@@ -36,7 +36,7 @@ def get_daily_stats():
             GROUP BY hour
         """, (start,))
         rows = cursor.fetchall()
-    # Преобразуем в список из 16 интервалов (6–7, 7–8, ..., 21–22)
+    # transform into a list of 16 intervals
     hours = [f"{h}–{int(h)+1}" for h in range(6, 22)]
     values = [0 for _ in hours]
     for hour, count in rows:
@@ -45,7 +45,7 @@ def get_daily_stats():
             values[idx] = count
     return hours, values
 
-# Получить статистику по дням недели (за последние 7 дней)
+# get stat by day (weekly)
 def get_weekly_stats():
     today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
     week_ago = today - timedelta(days=6)
