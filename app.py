@@ -1,10 +1,10 @@
 from flask import Flask, render_template, redirect, url_for, request
-from db import init_db, add_event, get_daily_stats, get_weekly_stats
+from db import init_db, get_daily_stats, get_weekly_stats, log_event
+from gpio_buttons import start_gpio_listener, people
 import time
 import threading
 
 app = Flask(__name__)
-people = []  #временные метки входов
 
 def auto_remove(ts):
     time.sleep(60 * 60)  #60 мин
@@ -60,7 +60,7 @@ init_db()
 def mark_in():
     ts = time.time()
     people.append(ts)
-    add_event("in")
+    log_event("IN (web)")
     threading.Thread(target=auto_remove, args=(ts,), daemon=True).start()
     return redirect(url_for('activity'))
 
@@ -68,7 +68,7 @@ def mark_in():
 def mark_out():
     if people:
         people.pop(0)
-    add_event("out")
+    log_event("OUT (web)")
     return redirect(url_for('activity'))
 
 @app.route('/api/daily')
@@ -84,6 +84,8 @@ def api_weekly():
 @app.route('/api/count')
 def api_count():
     return {"count": len(people)}
+
+start_gpio_listener()
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
