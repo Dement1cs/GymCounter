@@ -1,11 +1,12 @@
 import time
 from threading import Thread
-from db import log_event
+from db import log_event  
 
-# Пины (оставим тут)
+# button pins
 IN_BUTTON_PIN = 17
 OUT_BUTTON_PIN = 27
 
+# saving current num of people
 people = []
 
 def handle_in_button():
