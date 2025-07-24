@@ -29,7 +29,7 @@ fetch("/api/daily")
       data: {
         labels: data.labels,
         datasets: [{
-          label: 'Посещения',
+          label: 'Visits',
           data: data.values,
           backgroundColor: '#21C488'
         }]
@@ -58,7 +58,7 @@ fetch("/api/weekly")
       data: {
         labels: data.labels,
         datasets: [{
-          label: 'Посещения',
+          label: 'Visits',
           data: data.values,
           backgroundColor: '#21C488'
         }]
@@ -232,5 +232,4 @@ fetch("/api/weekly")
     await fetch('/out', { method: 'POST' });
     updateCount();
   });
-</script>
-</html> 
+</script></html> 
