@@ -4,7 +4,7 @@ All code for working with physical buttons is moved to the `gpio_buttons.py`.
 
 # File structure
 
-- **pins**  
+**pins**  
     ```python
     IN_BUTTON_PIN = 17   # GPIO-pin for «IN»
     OUT_BUTTON_PIN = 27  # GPIO-pin for «OUT»
