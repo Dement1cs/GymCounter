@@ -35,12 +35,14 @@ python app.py
 pip install Flask
 pip install pytest
 ```
+- **Physical buttons**: docs/gpio_buttons.md
 
 ## Project Structure
 ```bash
 GymCounter/
 ├── app.py              # Flask Application and Routes
 ├── db.py               # working with SQLite
+├── gpio_buttons.py     # for Physical buttons
 ├── requirements.txt    # Project dependencies
 ├── schema.sql          # SQL script for creating the events table
 ├── templates/          # Templates (index.html, activity.html)

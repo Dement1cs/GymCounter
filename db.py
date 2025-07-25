@@ -5,7 +5,7 @@ DB_NAME = "db.sqlite3"
 
 def log_event(event_type):
     """
-    Записывает событие event_type с текущей меткой времени в таблицу events.
+    writing event event_type with current time pint in events table
     """
     conn = sqlite3.connect(DB_NAME)
     cur = conn.cursor()
@@ -18,7 +18,7 @@ def log_event(event_type):
 
 def init_db():
     """
-    Создаёт таблицу events, если её нет.
+    create events table
     """
     with sqlite3.connect(DB_NAME) as conn:
         cursor = conn.cursor()
@@ -33,7 +33,7 @@ def init_db():
 
 def add_event(event_type):
     """
-    Сохраняет простое событие без метки времени (если нужно).
+    saves simple event with not time point.
     """
     with sqlite3.connect(DB_NAME) as conn:
         cursor = conn.cursor()
@@ -42,8 +42,8 @@ def add_event(event_type):
 
 def get_daily_stats():
     """
-    Возвращает списки меток часов (6–7 … 21–22) и 
-    количества входов в каждый час за сегодня.
+    return list of time marks 
+    num-s of "IN" every hours for a day
     """
     now = datetime.now()
     start = now.replace(hour=0, minute=0, second=0, microsecond=0)
@@ -68,8 +68,11 @@ def get_daily_stats():
 
 def get_weekly_stats():
     """
-    Возвращает списки меток дней недели и 
-    количества входов за каждый из последних 7 дней.
+    return list of time marks for week
+    num-s of "IN" for a week
+
+    Returns lists of day of week labels and
+    number of logins for each of the last 7 days.
     """
     today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
     week_ago = today - timedelta(days=6)
@@ -90,5 +93,5 @@ def get_weekly_stats():
         idx = int(weekday_str)
         counts[idx] = count
 
-    # Переставляем, чтобы неделя шла Mon…Sun
+   
     return labels[1:] + [labels[0]], counts[1:] + [counts[0]]
