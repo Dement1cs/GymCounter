@@ -2,14 +2,14 @@
 
 All code for working with physical buttons is moved to the `gpio_buttons.py`.
 
-## File structure
+# File structure
 
 - **pins**  
     ```python
     IN_BUTTON_PIN = 17   # GPIO-pin for «IN»
     OUT_BUTTON_PIN = 27  # GPIO-pin for «OUT»
     ```
-# Handler functions
+## Handler functions
     ```python
     def handle_in_button():
         people.append(time.time())
@@ -23,7 +23,7 @@ All code for working with physical buttons is moved to the `gpio_buttons.py`.
         print("[GPIO] OUT button pressed")
     ```
 
-# Listener
+## Listener
     ```python
     def listen_buttons():
     try:
@@ -51,22 +51,22 @@ All code for working with physical buttons is moved to the `gpio_buttons.py`.
     Thread(target=listen_buttons, daemon=True).start()
     ```
 
-## How to connect
+# How to connect
 
-# Make sure the library is installed on the Pi:
+## Make sure the library is installed on the Pi:
 
     ```python
     sudo apt install python3-rpi.gpio
     ```
     
-# The buttons are connected like this:
+## The buttons are connected like this:
 
     ```python
     One contact of the button is to the GPIO pin (17 or 27).
     The second is to GND (when using pull_up_down=GPIO.PUD_UP).
     ```
 
-# In app.py, import and start the listener:
+## In app.py, import and start the listener:
 
     ```python
     from gpio_buttons import start_gpio_listener, people
