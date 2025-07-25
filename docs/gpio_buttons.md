@@ -46,7 +46,7 @@ All code for working with physical buttons is moved to the `gpio_buttons.py`
             time.sleep(0.5)
 ```
 
-# Entry point
+## Entry point
 ```python
     def start_gpio_listener():
     Thread(target=listen_buttons, daemon=True).start()
