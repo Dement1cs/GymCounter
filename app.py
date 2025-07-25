@@ -60,7 +60,7 @@ init_db()
 def mark_in():
     ts = time.time()
     people.append(ts)
-    log_event("IN (web)")
+    log_event("in")
     threading.Thread(target=auto_remove, args=(ts,), daemon=True).start()
     return redirect(url_for('activity'))
 
@@ -68,7 +68,7 @@ def mark_in():
 def mark_out():
     if people:
         people.pop(0)
-    log_event("OUT (web)")
+    log_event("out")
     return redirect(url_for('activity'))
 
 @app.route('/api/daily')

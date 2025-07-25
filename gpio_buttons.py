@@ -11,13 +11,13 @@ people = []
 
 def handle_in_button():
     people.append(time.time())
-    log_event("IN (physical)")
+    log_event("in-physical")
     print("[GPIO] IN button pressed")
 
 def handle_out_button():
     if people:
         people.pop(0)
-    log_event("OUT (physical)")
+    log_event("out-physical")
     print("[GPIO] OUT button pressed")
 
 def listen_buttons():
